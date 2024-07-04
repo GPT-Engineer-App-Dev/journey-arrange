@@ -9,6 +9,7 @@ import Destinations from "./pages/Destinations.jsx";
 import Bookings from "./pages/Bookings.jsx";
 import Contact from "./pages/Contact.jsx";
 import FlightSearch from "./pages/FlightSearch.jsx";
+import BookingConfirmation from "./pages/BookingConfirmation.jsx";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const App = () => {
               <Route path="bookings" element={<Bookings />} />
               <Route path="contact" element={<Contact />} />
               <Route path="flight-search" element={<FlightSearch />} />
+              <Route path="booking-confirmation" element={<BookingConfirmation />} />
             </Route>
           </Routes>
         </Router>

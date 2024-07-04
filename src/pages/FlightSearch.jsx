@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const flightSearchSchema = z.object({
   departureLocation: z.string().min(1, "Departure location is required"),
@@ -16,6 +17,7 @@ const flightSearchSchema = z.object({
 });
 
 const FlightSearch = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -29,6 +31,24 @@ const FlightSearch = () => {
     toast("Search submitted", {
       description: "Your flight search has been submitted.",
     });
+
+    // Mock booking confirmation data
+    const bookingData = {
+      flightInfo: {
+        flightNumber: "AB123",
+        departure: data.departureLocation,
+        arrival: data.arrivalLocation,
+        date: data.departureDate?.toLocaleDateString(),
+      },
+      passengerDetails: {
+        name: "John Doe",
+        email: "john.doe@example.com",
+        phone: "+1234567890",
+      },
+      bookingReference: "XYZ456",
+    };
+
+    navigate("/booking-confirmation", { state: bookingData });
   };
 
   return (
